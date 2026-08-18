@@ -236,16 +236,8 @@
 
     /* ── PORTFOLIO ── */
     #portfolio { background: #050508; }
-    .portfolio-tabs { display: flex; gap: 0.8rem; margin-bottom: 3rem; flex-wrap: wrap; justify-content: center; }
-    .tab-btn {
-      padding: 0.6rem 1.5rem; border-radius: 8px; font-size: 0.9rem;
-      font-weight: 700; cursor: pointer; border: 1px solid #334155;
-      background: transparent; color: #94a3b8; transition: all 0.3s;
-    }
-    .tab-btn:hover { border-color: #6366f1; color: #fff; }
-    .tab-btn.active { background: #6366f1; color: #fff; border-color: #6366f1; box-shadow: 0 0 15px rgba(99,102,241,0.4); }
     
-    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.8rem; }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.8rem; margin-top: 2rem; }
     .portfolio-card { padding: 0; display: flex; flex-direction: column; }
     .portfolio-thumb-img {
       width: 100%; aspect-ratio: 16/10; overflow: hidden;
@@ -602,16 +594,10 @@
     <h2 class="sec-title">Recent <span class="text-gradient">Projects</span></h2>
     <p class="sec-desc">A snapshot of builds across coaching, real estate, agencies, e-commerce and local service businesses.</p>
   </div>
-  <div class="portfolio-tabs">
-    <button class="tab-btn active" onclick="filterPortfolio('all', this)">All Work</button>
-    <button class="tab-btn" onclick="filterPortfolio('funnel', this)">Funnels</button>
-    <button class="tab-btn" onclick="filterPortfolio('crm', this)">CRM & Automation</button>
-    <button class="tab-btn" onclick="filterPortfolio('website', this)">Websites</button>
-  </div>
   
   <div class="portfolio-grid" id="portfolioGrid">
 
-    <div class="dark-card portfolio-card" data-type="crm">
+    <div class="dark-card portfolio-card">
       <div class="portfolio-thumb-img" onclick="openModal('proud')">
         <img src="Proud Project.png" alt="Proud Project" loading="lazy" onerror="this.parentElement.style.background='#1e293b';this.style.display='none'"/>
       </div>
@@ -622,7 +608,7 @@
       </div>
     </div>
 
-    <div class="dark-card portfolio-card" data-type="crm">
+    <div class="dark-card portfolio-card">
       <div class="portfolio-thumb-img" onclick="openModal('pipeline')">
         <img src="Pipelines.png" alt="Pipelines" loading="lazy" onerror="this.parentElement.style.background='#1e293b';this.style.display='none'"/>
       </div>
@@ -633,7 +619,7 @@
       </div>
     </div>
 
-    <div class="dark-card portfolio-card" data-type="crm">
+    <div class="dark-card portfolio-card">
       <div class="portfolio-thumb-img" onclick="openModal('cancel')">
         <img src="Appointment Cancel Add balance back workflows.png" alt="Appointment Cancel & Balance Back" loading="lazy" onerror="this.parentElement.style.background='#1e293b';this.style.display='none'"/>
       </div>
@@ -644,7 +630,7 @@
       </div>
     </div>
 
-    <div class="dark-card portfolio-card" data-type="crm">
+    <div class="dark-card portfolio-card">
       <div class="portfolio-thumb-img" onclick="openModal('confirm')">
         <img src="Appointment Confirmation WOrkflows.png" alt="Appointment Confirmation Workflow" loading="lazy" onerror="this.parentElement.style.background='#1e293b';this.style.display='none'"/>
       </div>
@@ -655,7 +641,7 @@
       </div>
     </div>
 
-    <div class="dark-card portfolio-card" data-type="crm">
+    <div class="dark-card portfolio-card">
       <div class="portfolio-thumb-img" onclick="openModal('membership')">
         <img src="Membership Workflows.png" alt="Membership Workflows" loading="lazy" onerror="this.parentElement.style.background='#1e293b';this.style.display='none'"/>
       </div>
@@ -666,7 +652,7 @@
       </div>
     </div>
 
-    <div class="dark-card portfolio-card" data-type="crm">
+    <div class="dark-card portfolio-card">
       <div class="portfolio-thumb-img" onclick="openModal('email')">
         <img src="highest Email Delivery Rate.png" alt="Highest Email Delivery Rate" loading="lazy" onerror="this.parentElement.style.background='#1e293b';this.style.display='none'"/>
       </div>
@@ -677,8 +663,9 @@
       </div>
     </div>
     
-    <div class="dark-card portfolio-card" data-type="crm">
+    <div class="dark-card portfolio-card">
       <div class="portfolio-thumb-img" onclick="openModal('order')">
+        <!-- EXACT NAME FROM GITHUB SCREENSHOT -->
         <img src="order Request Workflows.png" alt="Order Request Workflows" loading="lazy" onerror="this.parentElement.style.background='#1e293b';this.style.display='none'"/>
       </div>
       <div class="portfolio-card-body">
@@ -688,8 +675,19 @@
       </div>
     </div>
 
-    <!-- UPDATED: Using "reactivation Workflows.png" from Github -->
-    <div class="dark-card portfolio-card" data-type="crm">
+    <div class="dark-card portfolio-card">
+      <div class="portfolio-thumb-img" onclick="openModal('gmb')">
+        <!-- EXACT NAME FROM GITHUB SCREENSHOT -->
+        <img src="GMB- Setup.png" alt="Google My Business Setup" loading="lazy" onerror="this.parentElement.style.background='#1e293b';this.style.display='none'"/>
+      </div>
+      <div class="portfolio-card-body">
+        <h4>Google My Business Setup</h4>
+        <p>GMB connected to GHL for review automation, messaging, and reputation management.</p>
+        <button class="view-details-btn" onclick="openModal('gmb')">View Details →</button>
+      </div>
+    </div>
+
+    <div class="dark-card portfolio-card">
       <div class="portfolio-thumb-img" onclick="openModal('reactivation')">
         <img src="reactivation Workflows.png" alt="Reactivation Workflows" loading="lazy" onerror="this.parentElement.style.background='#1e293b';this.style.display='none'"/>
       </div>
@@ -700,8 +698,7 @@
       </div>
     </div>
 
-    <!-- UPDATED: Using "Social Media Event Creation.jpg" from Github -->
-    <div class="dark-card portfolio-card" data-type="crm">
+    <div class="dark-card portfolio-card">
       <div class="portfolio-thumb-img" onclick="openModal('social')">
         <img src="Social Media Event Creation.jpg" alt="Social Media Event Creation" loading="lazy" onerror="this.parentElement.style.background='#1e293b';this.style.display='none'"/>
       </div>
@@ -980,17 +977,22 @@
     },
     "order": {
       title: "Order Request Workflows",
-      img: "order Request Workflows.png", /* Fixed: .png matched to github */
+      img: "order Request Workflows.png",
       desc: "My client assigned me this project to completely overhaul how they route order requests. I constructed this wide-scale GoHighLevel workflow to automatically categorize, filter, and process incoming requests. By utilizing multi-path conditional logic, this build ensures every single order is instantly tagged, routed to the correct department, and followed up with the appropriate automated notification sequences."
     },
-    "reactivation": { /* Fixed: Name matched to github */
+    "gmb": {
+      title: "Google My Business Setup",
+      img: "GMB- Setup.png",
+      desc: "My client assigned me this project to fully automate their local reputation management. I successfully integrated their Google My Business profile with GoHighLevel, setting up automated review request sequences post-appointment, and centralizing all GMB messaging directly into their GHL conversations tab. This setup boosted their 5-star reviews by over 40% in just a few months."
+    },
+    "reactivation": { 
       title: "Reactivation Workflows",
-      img: "reactivation Workflows.png", /* Fixed: Name matched to github */
+      img: "reactivation Workflows.png", 
       desc: "My client assigned me this project to revive their stale contact lists. I built a comprehensive reactivation campaign that automatically filters dead leads and sends targeted, personalized follow-ups. This multi-step sequence successfully re-engaged old contacts, moving them back into the active pipeline and generating new booked calls from previously lost opportunities."
     },
     "social": {
       title: "Social Media Event Creation",
-      img: "Social Media Event Creation.jpg", /* Fixed: Name matched to github */
+      img: "Social Media Event Creation.jpg", 
       desc: "For this project, my client wanted to stop juggling clunky third-party social media tools. I set up their entire GoHighLevel Social Planner, fully integrating their accounts. I also automated their event creation workflows, allowing them to schedule and manage months of content and events in advance directly from their CRM dashboard."
     }
   };
@@ -1019,15 +1021,6 @@
     const isOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
-  }
-
-  // Portfolio filter
-  function filterPortfolio(type, btn) {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.portfolio-card').forEach(card => {
-      card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
-    });
   }
 
   // Form submit
