@@ -506,7 +506,6 @@
 <section id="about">
   <div class="about-grid">
     <div class="about-img-wrap">
-      <!-- Profile Image Here -->
       <img src="Musharaf Abbass.jpg" alt="Musharaf Abbas" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
       <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:6rem;background:#1e1e2f;">👨‍💻</div>
       <div class="about-badge-float">
@@ -609,11 +608,11 @@
     <button class="tab-btn" onclick="filterPortfolio('crm', this)">CRM & Automation</button>
     <button class="tab-btn" onclick="filterPortfolio('website', this)">Websites</button>
   </div>
+  
   <div class="portfolio-grid" id="portfolioGrid">
 
     <div class="dark-card portfolio-card" data-type="crm">
       <div class="portfolio-thumb-img" onclick="openModal('proud')">
-        <!-- FIXED: changed extension back to .png -->
         <img src="Proud Project.png" alt="Proud Project" loading="lazy" onerror="this.parentElement.style.background='#1e293b';this.style.display='none'"/>
       </div>
       <div class="portfolio-card-body">
@@ -680,7 +679,7 @@
     
     <div class="dark-card portfolio-card" data-type="crm">
       <div class="portfolio-thumb-img" onclick="openModal('order')">
-        <img src="order Request Workflows.jpg" alt="Order Request Workflows" loading="lazy" onerror="this.parentElement.style.background='#1e293b';this.style.display='none'"/>
+        <img src="order Request Workflows.png" alt="Order Request Workflows" loading="lazy" onerror="this.parentElement.style.background='#1e293b';this.style.display='none'"/>
       </div>
       <div class="portfolio-card-body">
         <h4>Order Request Workflows</h4>
@@ -689,24 +688,26 @@
       </div>
     </div>
 
+    <!-- UPDATED: Using "reactivation Workflows.png" from Github -->
     <div class="dark-card portfolio-card" data-type="crm">
-      <div class="portfolio-thumb-img" onclick="openModal('gmb')">
-        <img src="Google My Business- Setup.png" alt="Google My Business Setup" loading="lazy" onerror="this.parentElement.style.background='#1e293b';this.style.display='none'"/>
+      <div class="portfolio-thumb-img" onclick="openModal('reactivation')">
+        <img src="reactivation Workflows.png" alt="Reactivation Workflows" loading="lazy" onerror="this.parentElement.style.background='#1e293b';this.style.display='none'"/>
       </div>
       <div class="portfolio-card-body">
-        <h4>Google My Business Integration</h4>
-        <p>GMB connected to GHL for review automation, messaging, and reputation management.</p>
-        <button class="view-details-btn" onclick="openModal('gmb')">View Details →</button>
+        <h4>Reactivation Workflows</h4>
+        <p>Automated campaigns to re-engage dead leads and old contacts.</p>
+        <button class="view-details-btn" onclick="openModal('reactivation')">View Details →</button>
       </div>
     </div>
 
+    <!-- UPDATED: Using "Social Media Event Creation.jpg" from Github -->
     <div class="dark-card portfolio-card" data-type="crm">
       <div class="portfolio-thumb-img" onclick="openModal('social')">
-        <img src="social media management.png" alt="Social Media Management" loading="lazy" onerror="this.parentElement.style.background='#1e293b';this.style.display='none'"/>
+        <img src="Social Media Event Creation.jpg" alt="Social Media Event Creation" loading="lazy" onerror="this.parentElement.style.background='#1e293b';this.style.display='none'"/>
       </div>
       <div class="portfolio-card-body">
-        <h4>Social Media Management & Event Creation</h4>
-        <p>Scheduled posts, event creation, and social planner setup inside GoHighLevel.</p>
+        <h4>Social Media Event Creation</h4>
+        <p>Automated event creation and social planner setup inside GoHighLevel.</p>
         <button class="view-details-btn" onclick="openModal('social')">View Details →</button>
       </div>
     </div>
@@ -949,7 +950,7 @@
   const projectsData = {
     "proud": {
       title: "Proud Project — Full GHL Build",
-      img: "Proud Project.png", /* FIXED EXTENSION */
+      img: "Proud Project.png",
       desc: "My client assigned me this massive project to build a comprehensive 'New Attendee Workflow' spanning an entire year (Feb - Dec 2026). I designed this intricate GoHighLevel automation with complex branching logic for each month to seamlessly handle tag additions, email confirmations, and tailored follow-ups based on the exact timeline of the attendee. It ensures absolutely no lead falls through the cracks over a full 12-month cycle."
     },
     "pipeline": {
@@ -979,18 +980,18 @@
     },
     "order": {
       title: "Order Request Workflows",
-      img: "order Request Workflows.jpg", /* MAKE SURE THIS IS UPLOADED TO GITHUB */
+      img: "order Request Workflows.png", /* Fixed: .png matched to github */
       desc: "My client assigned me this project to completely overhaul how they route order requests. I constructed this wide-scale GoHighLevel workflow to automatically categorize, filter, and process incoming requests. By utilizing multi-path conditional logic, this build ensures every single order is instantly tagged, routed to the correct department, and followed up with the appropriate automated notification sequences."
     },
-    "gmb": {
-      title: "Google My Business Integration",
-      img: "Google My Business- Setup.png", /* MAKE SURE GITHUB HAS THIS EXACT FILE NAME */
-      desc: "My client assigned me this project to fully automate their local reputation management. I successfully integrated their Google My Business profile with GoHighLevel, setting up automated review request sequences post-appointment, and centralizing all GMB messaging directly into their GHL conversations tab. This setup boosted their 5-star reviews by over 40% in just a few months."
+    "reactivation": { /* Fixed: Name matched to github */
+      title: "Reactivation Workflows",
+      img: "reactivation Workflows.png", /* Fixed: Name matched to github */
+      desc: "My client assigned me this project to revive their stale contact lists. I built a comprehensive reactivation campaign that automatically filters dead leads and sends targeted, personalized follow-ups. This multi-step sequence successfully re-engaged old contacts, moving them back into the active pipeline and generating new booked calls from previously lost opportunities."
     },
     "social": {
-      title: "Social Media Management & Event Creation",
-      img: "social media management.png",
-      desc: "For this project, my client wanted to stop juggling clunky third-party social media tools. I set up their entire GoHighLevel Social Planner, fully integrating their Facebook, Instagram, and LinkedIn accounts. I also automated their event creation workflows, allowing them to schedule and manage months of content in advance directly from their CRM dashboard."
+      title: "Social Media Event Creation",
+      img: "Social Media Event Creation.jpg", /* Fixed: Name matched to github */
+      desc: "For this project, my client wanted to stop juggling clunky third-party social media tools. I set up their entire GoHighLevel Social Planner, fully integrating their accounts. I also automated their event creation workflows, allowing them to schedule and manage months of content and events in advance directly from their CRM dashboard."
     }
   };
 
