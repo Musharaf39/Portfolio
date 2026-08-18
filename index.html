@@ -233,28 +233,27 @@
       width: 100%; aspect-ratio: 16/10; object-fit: cover;
       display: block; background: linear-gradient(135deg, #e0e7ff, #ddd6fe);
     }
-    .portfolio-thumb-placeholder {
-      width: 100%; aspect-ratio: 16/10;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2.5rem;
-    }
     .portfolio-card-body { padding: 1.1rem 1.3rem 1.3rem; }
     .portfolio-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.3rem; }
     .portfolio-card p { font-size: 0.8rem; color: #777; }
-    .portfolio-card a {
+    
+    /* View Details Button styling */
+    .view-details-btn {
       display: inline-flex; align-items: center; gap: 0.3rem;
-      font-size: 0.8rem; font-weight: 600; color: #4f46e5;
-      text-decoration: none; margin-top: 0.6rem;
-      transition: gap 0.2s;
+      font-size: 0.85rem; font-weight: 700; color: #4f46e5;
+      text-decoration: none; margin-top: 0.8rem;
+      transition: gap 0.2s, color 0.2s; cursor: pointer;
+      background: none; border: none; padding: 0; font-family: inherit;
     }
-    .portfolio-card a:hover { gap: 0.5rem; }
+    .view-details-btn:hover { gap: 0.5rem; color: #3730a3; }
+
     .portfolio-thumb-img {
       width: 100%; aspect-ratio: 16/10; overflow: hidden;
       background: #f0f0f0; border-radius: 10px 10px 0 0;
     }
     .portfolio-thumb-img img {
       width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform 0.4s;
+      transition: transform 0.4s; cursor: pointer;
     }
     .portfolio-card:hover .portfolio-thumb-img img { transform: scale(1.04); }
 
@@ -389,6 +388,52 @@
     .footer-bottom a { color: #555; text-decoration: none; font-size: 0.8rem; }
     .footer-bottom a:hover { color: #fff; }
 
+    /* ── PROJECT MODAL POPUP ── */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85); z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+      padding: 20px; backdrop-filter: blur(4px);
+    }
+    .modal-overlay.active {
+      opacity: 1; pointer-events: auto;
+    }
+    .modal-content {
+      background: #fff; border-radius: 14px; max-width: 850px; width: 100%;
+      max-height: 90vh; overflow-y: auto; position: relative;
+      transform: translateY(20px); transition: transform 0.3s ease;
+      display: flex; flex-direction: column; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    .modal-overlay.active .modal-content {
+      transform: translateY(0);
+    }
+    .modal-close {
+      position: absolute; top: 15px; right: 15px; font-size: 2rem;
+      cursor: pointer; color: #111; z-index: 10;
+      background: rgba(255,255,255,0.9); border-radius: 50%; width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1); line-height: 1; transition: background 0.2s;
+    }
+    .modal-close:hover { background: #eee; }
+    .modal-image {
+      width: 100%; background: #f8fafc; border-bottom: 1px solid #eee;
+    }
+    .modal-image img {
+      width: 100%; height: auto; display: block; max-height: 55vh; 
+      object-fit: contain; padding: 20px; border-radius: 14px 14px 0 0;
+    }
+    .modal-body {
+      padding: 2.5rem;
+    }
+    .modal-title {
+      font-size: 1.6rem; font-weight: 900; margin-bottom: 1rem; color: #111;
+      letter-spacing: -0.02em;
+    }
+    .modal-desc {
+      font-size: 1rem; color: #444; line-height: 1.8;
+    }
+
     /* ── MOBILE ── */
     @media(max-width:768px){
       .about-grid { grid-template-columns: 1fr; }
@@ -401,6 +446,8 @@
       .nav-links { display: none; }
       .hamburger { display: block; }
       .checklist { grid-template-columns: 1fr; }
+      .modal-body { padding: 1.5rem; }
+      .modal-image img { padding: 10px; max-height: 40vh; }
     }
   </style>
 </head>
@@ -612,90 +659,102 @@
   <div class="portfolio-grid" id="portfolioGrid">
 
     <div class="portfolio-card" data-type="crm">
-      <div class="portfolio-thumb-img">
-        <img src="Proud Project.png" alt="Proud Project" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#e0e7ff,#c7d2fe)';this.style.display='none'"/>
+      <div class="portfolio-thumb-img" onclick="openModal('proud')">
+        <img src="Proud Project.jpg" alt="Proud Project" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#e0e7ff,#c7d2fe)';this.style.display='none'"/>
       </div>
       <div class="portfolio-card-body">
         <h4>Proud Project — Full GHL Build</h4>
         <p>Complete GHL system — CRM, funnel, workflows, and automation fully set up end to end.</p>
-        <a href="#contact">View Details →</a>
+        <button class="view-details-btn" onclick="openModal('proud')">View Details →</button>
       </div>
     </div>
 
     <div class="portfolio-card" data-type="crm">
-      <div class="portfolio-thumb-img">
+      <div class="portfolio-thumb-img" onclick="openModal('pipeline')">
         <img src="Pipelines.png" alt="Pipelines" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#d1fae5,#a7f3d0)';this.style.display='none'"/>
       </div>
       <div class="portfolio-card-body">
         <h4>Pipeline Setup & CRM Management</h4>
         <p>Multi-stage opportunity pipeline with tags, custom fields, and automated stage movement.</p>
-        <a href="#contact">View Details →</a>
+        <button class="view-details-btn" onclick="openModal('pipeline')">View Details →</button>
       </div>
     </div>
 
     <div class="portfolio-card" data-type="crm">
-      <div class="portfolio-thumb-img">
+      <div class="portfolio-thumb-img" onclick="openModal('cancel')">
         <img src="Appointment Cancel Add balance back workflows.png" alt="Appointment Cancel & Balance Back" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#fef3c7,#fde68a)';this.style.display='none'"/>
       </div>
       <div class="portfolio-card-body">
         <h4>Appointment Cancel & Balance Back Workflow</h4>
         <p>Smart automation that handles cancellations and automatically restores client balance.</p>
-        <a href="#contact">View Details →</a>
+        <button class="view-details-btn" onclick="openModal('cancel')">View Details →</button>
       </div>
     </div>
 
     <div class="portfolio-card" data-type="crm">
-      <div class="portfolio-thumb-img">
+      <div class="portfolio-thumb-img" onclick="openModal('confirm')">
         <img src="Appointment Confirmation WOrkflows.png" alt="Appointment Confirmation Workflow" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#ede9fe,#ddd6fe)';this.style.display='none'"/>
       </div>
       <div class="portfolio-card-body">
         <h4>Appointment Confirmation Workflow</h4>
         <p>Automated confirmation sequences — SMS, email, and reminders so no-shows drop dramatically.</p>
-        <a href="#contact">View Details →</a>
+        <button class="view-details-btn" onclick="openModal('confirm')">View Details →</button>
       </div>
     </div>
 
     <div class="portfolio-card" data-type="crm">
-      <div class="portfolio-thumb-img">
+      <div class="portfolio-thumb-img" onclick="openModal('membership')">
         <img src="Membership Workflows.png" alt="Membership Workflows" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#ecfeff,#a5f3fc)';this.style.display='none'"/>
       </div>
       <div class="portfolio-card-body">
         <h4>Membership Workflows</h4>
         <p>Full membership onboarding, access grant, renewal reminders, and cancellation automation.</p>
-        <a href="#contact">View Details →</a>
+        <button class="view-details-btn" onclick="openModal('membership')">View Details →</button>
       </div>
     </div>
 
     <div class="portfolio-card" data-type="crm">
-      <div class="portfolio-thumb-img">
+      <div class="portfolio-thumb-img" onclick="openModal('email')">
         <img src="highest Email Delivery Rate.png" alt="Highest Email Delivery Rate" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#f0fdf4,#bbf7d0)';this.style.display='none'"/>
       </div>
       <div class="portfolio-card-body">
         <h4>Highest Email Delivery Rate Setup</h4>
         <p>Mailgun + domain authentication + warm-up strategy for maximum inbox delivery rates.</p>
-        <a href="#contact">View Details →</a>
+        <button class="view-details-btn" onclick="openModal('email')">View Details →</button>
+      </div>
+    </div>
+    
+    <!-- ADDED 9TH CARD FOR ORDER WORKFLOWS IMAGE -->
+    <div class="portfolio-card" data-type="crm">
+      <div class="portfolio-thumb-img" onclick="openModal('order')">
+        <img src="order Request Workflows.jpg" alt="Order Request Workflows" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#e0f2fe,#bae6fd)';this.style.display='none'"/>
+      </div>
+      <div class="portfolio-card-body">
+        <h4>Order Request Workflows</h4>
+        <p>Comprehensive order routing and dynamic fulfillment automation.</p>
+        <button class="view-details-btn" onclick="openModal('order')">View Details →</button>
       </div>
     </div>
 
     <div class="portfolio-card" data-type="crm">
-      <div class="portfolio-thumb-img">
+      <div class="portfolio-thumb-img" onclick="openModal('gmb')">
         <img src="Google My Business- Setup.png" alt="Google My Business Setup" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#fff7ed,#fed7aa)';this.style.display='none'"/>
       </div>
       <div class="portfolio-card-body">
         <h4>Google My Business Integration</h4>
         <p>GMB connected to GHL for review automation, messaging, and reputation management.</p>
-        <a href="#contact">View Details →</a>
+        <button class="view-details-btn" onclick="openModal('gmb')">View Details →</button>
       </div>
     </div>
 
     <div class="portfolio-card" data-type="crm">
-      <div class="portfolio-thumb-img">
+      <div class="portfolio-thumb-img" onclick="openModal('social')">
         <img src="social media management.png" alt="Social Media Management" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#fdf4ff,#e9d5ff)';this.style.display='none'"/>
       </div>
       <div class="portfolio-card-body">
         <h4>Social Media Management & Event Creation</h4>
         <p>Scheduled posts, event creation, and social planner setup inside GoHighLevel.</p>
-        <a href="#contact">View Details →</a>
+        <button class="view-details-btn" onclick="openModal('social')">View Details →</button>
       </div>
     </div>
 
@@ -991,7 +1050,88 @@
   </div>
 </footer>
 
+<!-- PROJECT DETAILS MODAL -->
+<div class="modal-overlay" id="projectModal" onclick="if(event.target === this) closeModal()">
+  <div class="modal-content">
+    <div class="modal-close" onclick="closeModal()">×</div>
+    <div class="modal-image">
+      <img id="modalImg" src="" alt="Project Visual" />
+    </div>
+    <div class="modal-body">
+      <h3 class="modal-title" id="modalTitle">Project Title</h3>
+      <p class="modal-desc" id="modalDesc">Project description goes here...</p>
+    </div>
+  </div>
+</div>
+
 <script>
+  // Dynamic Project Data (Descriptive stories based on the provided images)
+  const projectsData = {
+    "proud": {
+      title: "Proud Project — Full GHL Build",
+      img: "Proud Project.jpg",
+      desc: "My client assigned me this massive project to build a comprehensive 'New Attendee Workflow' spanning an entire year (Feb - Dec 2026). I designed this intricate GoHighLevel automation with complex branching logic for each month to seamlessly handle tag additions, email confirmations, and tailored follow-ups based on the exact timeline of the attendee. It ensures absolutely no lead falls through the cracks over a full 12-month cycle."
+    },
+    "pipeline": {
+      title: "Pipeline Setup & CRM Management",
+      img: "Pipelines.png",
+      desc: "My client needed a robust way to track leads from completely distinct sources without any clutter. I built out this comprehensive pipeline architecture, segmenting their opportunities into 11 specialized pipelines—ranging from GMB, Facebook, and Instagram leads to very specific booked/cancelled appointment statuses. This setup gave them total top-down visibility into their sales process and allowed for laser-focused stage automations."
+    },
+    "cancel": {
+      title: "Appointment Cancel & Balance Back Workflow",
+      img: "Appointment Cancel Add balance back workflows.png",
+      desc: "My client assigned me this project to completely handle complex appointment cancellations. I built this workflow to automatically calculate and add back 'balance hours' to the client's account whenever an appointment is cancelled. It uses advanced conditional logic to determine the exact hours, performs backend math operations, and seamlessly notifies both the customer (via SMS/Email) and the internal team to update their schedules."
+    },
+    "confirm": {
+      title: "Appointment Confirmation Workflow",
+      img: "Appointment Confirmation WOrkflows.png",
+      desc: "To drastically reduce their alarming no-show rates, my client needed a highly customized appointment confirmation system. I designed this extensive workflow that branches out dynamically based entirely on the specific reservation duration (1 to 4 hours). It updates pipeline opportunities, applies specific duration tags, and deploys precisely timed confirmation emails and SMS messages to the customer, while also keeping the internal staff perfectly alerted."
+    },
+    "membership": {
+      title: "Membership & Bulk Hours Workflow",
+      img: "Membership Workflows.png",
+      desc: "For this project, my client wanted a fully hands-off backend system to manage bulk hour purchases and special memberships. I created this massive branching automation to instantly process new orders, dynamically apply the correct package tags (ranging from 10 to 200 hours, plus special hyperbaric therapies), update the client's total balance via internal math operations, and immediately dispatch customized confirmation emails."
+    },
+    "email": {
+      title: "Highest Email Delivery Rate Setup",
+      img: "highest Email Delivery Rate.png",
+      desc: "My client was really struggling with email deliverability, so they brought me in to fix their infrastructure. After setting up proper domain authentication (DMARC, DKIM, SPF) and implementing a strict list-warming strategy through Mailgun, I achieved a massive 99.08% delivery rate with zero spam complaints and an impressive 44.42% open rate. This project directly translated to a massive increase in their campaign ROI."
+    },
+    "order": {
+      title: "Order Request Workflows",
+      img: "order Request Workflows.jpg",
+      desc: "My client assigned me this project to completely overhaul how they route order requests. I constructed this wide-scale GoHighLevel workflow to automatically categorize, filter, and process incoming requests. By utilizing multi-path conditional logic, this build ensures every single order is instantly tagged, routed to the correct department, and followed up with the appropriate automated notification sequences."
+    },
+    "gmb": {
+      title: "Google My Business Integration",
+      img: "Google My Business- Setup.png",
+      desc: "My client assigned me this project to fully automate their local reputation management. I successfully integrated their Google My Business profile with GoHighLevel, setting up automated review request sequences post-appointment, and centralizing all GMB messaging directly into their GHL conversations tab. This setup boosted their 5-star reviews by over 40% in just a few months."
+    },
+    "social": {
+      title: "Social Media Management & Event Creation",
+      img: "social media management.png",
+      desc: "For this project, my client wanted to stop juggling clunky third-party social media tools. I set up their entire GoHighLevel Social Planner, fully integrating their Facebook, Instagram, and LinkedIn accounts. I also automated their event creation workflows, allowing them to schedule and manage months of content in advance directly from their CRM dashboard."
+    }
+  };
+
+  // Modal Functions
+  function openModal(projectId) {
+    const data = projectsData[projectId];
+    if (!data) return;
+    
+    document.getElementById('modalTitle').textContent = data.title;
+    document.getElementById('modalImg').src = data.img;
+    document.getElementById('modalDesc').textContent = data.desc;
+    
+    document.getElementById('projectModal').classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  }
+
+  function closeModal() {
+    document.getElementById('projectModal').classList.remove('active');
+    document.body.style.overflow = ''; // Restore background scrolling
+  }
+
   // FAQ toggle
   function toggleFaq(btn) {
     const item = btn.parentElement;
