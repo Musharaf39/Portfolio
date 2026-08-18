@@ -248,6 +248,15 @@
       transition: gap 0.2s;
     }
     .portfolio-card a:hover { gap: 0.5rem; }
+    .portfolio-thumb-img {
+      width: 100%; aspect-ratio: 16/10; overflow: hidden;
+      background: #f0f0f0; border-radius: 10px 10px 0 0;
+    }
+    .portfolio-thumb-img img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.4s;
+    }
+    .portfolio-card:hover .portfolio-thumb-img img { transform: scale(1.04); }
 
     /* ── TESTIMONIALS ── */
     #testimonials { background: #f9f9fb; }
@@ -461,8 +470,12 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="about-grid">
-    <div class="about-img-wrap">
-      <div class="about-avatar">👨‍💻</div>
+    <div class="about-img-wrap" style="padding:0;overflow:hidden;background:none;">
+      <img src="https://drive.google.com/uc?export=view&id=1CMJmXZidKoVMZz_eM1kkWiWbzxrKgrce"
+           alt="Musharaf Abbas"
+           style="width:100%;height:100%;object-fit:cover;display:block;border-radius:20px;"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:6rem;background:linear-gradient(145deg,#1a1a1a,#2a2a2a);border-radius:20px;">👨‍💻</div>
       <div class="about-badge-float">
         <div class="num">300+</div>
         <div class="lbl">Projects Completed</div>
@@ -472,7 +485,7 @@
       <span class="sec-tag">About Me</span>
       <h2>Hi, I'm Musharaf Abbas — a GoHighLevel specialist who turns messy pipelines into revenue-generating machines.</h2>
       <p>Most business owners I talk to have the same problem — leads coming in from ads, referrals, or referrals, but falling through the cracks because follow-up is slow, the CRM is a mess, and the funnel was built by someone who disappeared after launch.</p>
-      <p>Over <strong>5+ years</strong>, I've built and automated systems for <strong>300+ clients</strong> across coaching, real estate, agencies, local businesses, and e-commerce — entirely inside GoHighLevel. Not templates. Not copy-paste. Fully custom systems built around how your business actually works.</p>
+      <p>Over <strong>4+ years</strong>, I've built and automated systems for <strong>300+ clients</strong> across coaching, real estate, agencies, local businesses, and e-commerce — entirely inside GoHighLevel. Not templates. Not copy-paste. Fully custom systems built around how your business actually works.</p>
       <p><strong>What I care about:</strong> your leads get followed up instantly, your pipeline stays clean, and your calendar fills — without you chasing anyone manually.</p>
       <ul class="checklist">
         <li>CRM & Pipeline Management</li>
@@ -596,54 +609,95 @@
     <button class="tab-btn" onclick="filterPortfolio('website', this)">Websites</button>
   </div>
   <div class="portfolio-grid" id="portfolioGrid">
-    <div class="portfolio-card" data-type="funnel">
-      <div class="portfolio-thumb-placeholder" style="background:linear-gradient(135deg,#e0e7ff,#c7d2fe);">🎯</div>
-      <div class="portfolio-card-body">
-        <h4>Coaching Funnel — Lead Capture</h4>
-        <p>Full opt-in funnel with booking page, CRM integration, and 5-step email sequence.</p>
-        <a href="#contact">View Details →</a>
-      </div>
-    </div>
+
     <div class="portfolio-card" data-type="crm">
-      <div class="portfolio-thumb-placeholder" style="background:linear-gradient(135deg,#d1fae5,#a7f3d0);">⚙️</div>
+      <div class="portfolio-thumb-img">
+        <img src="https://drive.google.com/uc?export=view&id=1WOXAQD2KaYzSEuxllqRNUIj9EWXGgyX2" alt="Proud Project" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#e0e7ff,#c7d2fe)';this.style.display='none'"/>
+      </div>
       <div class="portfolio-card-body">
-        <h4>Real Estate CRM Automation</h4>
-        <p>Multi-stage pipeline with automated follow-up, lead scoring, and appointment booking.</p>
+        <h4>Proud Project — Full GHL Build</h4>
+        <p>Complete GHL system — CRM, funnel, workflows, and automation fully set up end to end.</p>
         <a href="#contact">View Details →</a>
       </div>
     </div>
-    <div class="portfolio-card" data-type="website">
-      <div class="portfolio-thumb-placeholder" style="background:linear-gradient(135deg,#fee2e2,#fca5a5);">🌐</div>
-      <div class="portfolio-card-body">
-        <h4>Agency Website — GHL Built</h4>
-        <p>Full business website with forms, chat widget, and CRM integration for a marketing agency.</p>
-        <a href="#contact">View Details →</a>
-      </div>
-    </div>
-    <div class="portfolio-card" data-type="funnel">
-      <div class="portfolio-thumb-placeholder" style="background:linear-gradient(135deg,#fef3c7,#fde68a);">💰</div>
-      <div class="portfolio-card-body">
-        <h4>High-Ticket Sales Funnel</h4>
-        <p>VSL funnel with application form, conditional logic, and automated nurture sequence.</p>
-        <a href="#contact">View Details →</a>
-      </div>
-    </div>
+
     <div class="portfolio-card" data-type="crm">
-      <div class="portfolio-thumb-placeholder" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe);">🤖</div>
+      <div class="portfolio-thumb-img">
+        <img src="https://drive.google.com/uc?export=view&id=1X1Lc4Cvqvhgp8n1iQ5idLtTfj-9c9zVc" alt="Pipelines" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#d1fae5,#a7f3d0)';this.style.display='none'"/>
+      </div>
       <div class="portfolio-card-body">
-        <h4>Twilio + A2P 10DLC Setup</h4>
-        <p>Complete carrier registration, number provisioning, and SMS workflow automation.</p>
+        <h4>Pipeline Setup & CRM Management</h4>
+        <p>Multi-stage opportunity pipeline with tags, custom fields, and automated stage movement.</p>
         <a href="#contact">View Details →</a>
       </div>
     </div>
-    <div class="portfolio-card" data-type="website">
-      <div class="portfolio-thumb-placeholder" style="background:linear-gradient(135deg,#ecfeff,#a5f3fc);">🏠</div>
+
+    <div class="portfolio-card" data-type="crm">
+      <div class="portfolio-thumb-img">
+        <img src="https://drive.google.com/uc?export=view&id=125p_S-I0kaNWddBILs7bNO6l0-c3MgT9" alt="Appointment Cancel & Balance Back" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#fef3c7,#fde68a)';this.style.display='none'"/>
+      </div>
       <div class="portfolio-card-body">
-        <h4>Local Service Business Website</h4>
-        <p>Contractor website with online booking, reputation widgets, and GHL form integration.</p>
+        <h4>Appointment Cancel & Balance Back Workflow</h4>
+        <p>Smart automation that handles cancellations and automatically restores client balance.</p>
         <a href="#contact">View Details →</a>
       </div>
     </div>
+
+    <div class="portfolio-card" data-type="crm">
+      <div class="portfolio-thumb-img">
+        <img src="https://drive.google.com/uc?export=view&id=1NA3QHJdyksLyEq8d53KSvGdj8fZ_bXon" alt="Appointment Confirmation Workflow" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#ede9fe,#ddd6fe)';this.style.display='none'"/>
+      </div>
+      <div class="portfolio-card-body">
+        <h4>Appointment Confirmation Workflow</h4>
+        <p>Automated confirmation sequences — SMS, email, and reminders so no-shows drop dramatically.</p>
+        <a href="#contact">View Details →</a>
+      </div>
+    </div>
+
+    <div class="portfolio-card" data-type="crm">
+      <div class="portfolio-thumb-img">
+        <img src="https://drive.google.com/uc?export=view&id=1znHfnDUI6woA-PR28se-Nh5RYyKBtFTd" alt="Membership Workflows" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#ecfeff,#a5f3fc)';this.style.display='none'"/>
+      </div>
+      <div class="portfolio-card-body">
+        <h4>Membership Workflows</h4>
+        <p>Full membership onboarding, access grant, renewal reminders, and cancellation automation.</p>
+        <a href="#contact">View Details →</a>
+      </div>
+    </div>
+
+    <div class="portfolio-card" data-type="crm">
+      <div class="portfolio-thumb-img">
+        <img src="https://drive.google.com/uc?export=view&id=1InzGAK05PdY9Trg0Ha5zQTEGRTLUgmFU" alt="Highest Email Delivery Rate" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#f0fdf4,#bbf7d0)';this.style.display='none'"/>
+      </div>
+      <div class="portfolio-card-body">
+        <h4>Highest Email Delivery Rate Setup</h4>
+        <p>Mailgun + domain authentication + warm-up strategy for maximum inbox delivery rates.</p>
+        <a href="#contact">View Details →</a>
+      </div>
+    </div>
+
+    <div class="portfolio-card" data-type="crm">
+      <div class="portfolio-thumb-img">
+        <img src="https://drive.google.com/uc?export=view&id=1hHslfx6olElRYJnPsGx-C4m5MqwBllLl" alt="Google My Business Setup" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#fff7ed,#fed7aa)';this.style.display='none'"/>
+      </div>
+      <div class="portfolio-card-body">
+        <h4>Google My Business Integration</h4>
+        <p>GMB connected to GHL for review automation, messaging, and reputation management.</p>
+        <a href="#contact">View Details →</a>
+      </div>
+    </div>
+
+    <div class="portfolio-card" data-type="crm">
+      <div class="portfolio-thumb-img">
+        <img src="https://drive.google.com/uc?export=view&id=1iHDlF8Nni8UZVTJMKhqkna1cItdJRVN0" alt="Social Media Management" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#fdf4ff,#e9d5ff)';this.style.display='none'"/>
+      </div>
+      <div class="portfolio-card-body">
+        <h4>Social Media Management & Event Creation</h4>
+        <p>Scheduled posts, event creation, and social planner setup inside GoHighLevel.</p>
+        <a href="#contact">View Details →</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -845,25 +899,32 @@
       <h2>Ready to build your GHL system?</h2>
       <p>Whether you need a complete build from scratch, a fix for what's already broken, or ongoing GHL support — reach out and I'll get back to you within a few hours.</p>
       <div class="contact-links">
-        <a href="mailto:musharaf.abbas@email.com" class="contact-link">
+        <a href="mailto:musharafabbas618@gmail.com" class="contact-link">
           <span class="contact-link-icon">📧</span>
           <div>
             <div style="font-weight:700;font-size:0.85rem;">Email</div>
-            <div style="font-size:0.8rem;color:#888;">musharaf.abbas@email.com</div>
+            <div style="font-size:0.8rem;color:#888;">musharafabbas618@gmail.com</div>
           </div>
         </a>
-        <a href="https://linkedin.com/in/musharaf-abbas" target="_blank" class="contact-link">
+        <a href="https://www.linkedin.com/in/musharaf-abbas-634002342" target="_blank" class="contact-link">
           <span class="contact-link-icon">💼</span>
           <div>
             <div style="font-weight:700;font-size:0.85rem;">LinkedIn</div>
-            <div style="font-size:0.8rem;color:#888;">linkedin.com/in/musharaf-abbas</div>
+            <div style="font-size:0.8rem;color:#888;">linkedin.com/in/musharaf-abbas-634002342</div>
           </div>
         </a>
-        <a href="https://github.com/Musharaf-Abbas" target="_blank" class="contact-link">
+        <a href="https://www.upwork.com/freelancers/~016ed2f90fe107cb04" target="_blank" class="contact-link">
+          <span class="contact-link-icon">🟢</span>
+          <div>
+            <div style="font-weight:700;font-size:0.85rem;">Upwork</div>
+            <div style="font-size:0.8rem;color:#888;">Hire me on Upwork</div>
+          </div>
+        </a>
+        <a href="https://github.com/Musharaf39" target="_blank" class="contact-link">
           <span class="contact-link-icon">🐙</span>
           <div>
             <div style="font-weight:700;font-size:0.85rem;">GitHub</div>
-            <div style="font-size:0.8rem;color:#888;">github.com/Musharaf-Abbas</div>
+            <div style="font-size:0.8rem;color:#888;">github.com/Musharaf39</div>
           </div>
         </a>
       </div>
